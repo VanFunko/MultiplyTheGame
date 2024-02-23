@@ -13,10 +13,6 @@ func ChoiseQuantity(l Logger, allExps map[int]expression, quantityExps int) map[
 	for key, _ := range uniqMap {
 		expMap[key] = allExps[key]
 	}
-	//for i := 1; i <= quantityExps; i++ {
-	//	id := rand.Intn(len(allExps)-1) + 1
-	//	expMap[i] = allExps[id]
-	//}
 	l.ShowLog(expMap)
 	return expMap
 }
