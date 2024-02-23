@@ -2,7 +2,7 @@ package main
 
 import "math/rand"
 
-func ChoiseQuantity(l Logger, allExps map[int]expression, quantityExps int) map[int]expression {
+func ChoiceQuantity(l Logger, allExps map[int]expression, quantityExps int) map[int]expression {
 	expMap := make(map[int]expression)
 	uniqMap := make(map[int]int)
 	for len(uniqMap) < quantityExps {

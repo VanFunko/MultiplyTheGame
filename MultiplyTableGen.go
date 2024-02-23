@@ -10,7 +10,7 @@ func MultiplyTableGen(logg Logger, from int) map[int]expression {
 	expMap := make(map[int]expression)
 	exp := expression{}
 	ID := 0
-	if from == 0 {
+	if from == 1 {
 		for i := 2; i <= 10; i++ {
 			for j := 2; j <= 10; j++ {
 				ID++

@@ -1,7 +1,7 @@
 package main
 
 func clearMap(m map[int]expression) map[int]expression {
-	for k := range m { // Обнуляем карту не правильных ответов
+	for k := range m {
 		delete(m, k)
 	}
 	return m
