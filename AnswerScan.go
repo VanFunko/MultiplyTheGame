@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strconv"
 )
 
@@ -15,6 +16,9 @@ func AnswerScan(message string) int {
 	intScan, err := strconv.Atoi(str)
 	if err != nil {
 		return AnswerScan("Вводить можно только цифры.")
+	}
+	if intScan == 0 {
+		os.Exit(1)
 	}
 	return intScan
 }

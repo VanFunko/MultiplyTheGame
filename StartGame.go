@@ -2,15 +2,16 @@ package main
 
 import (
 	"fmt"
-	"os"
 )
 
 func StartGame(l Logger) {
 	counter := 1
-	table := MultiplyTableGen(l, AnswerScan("Введи разряд таблицы или 0 для тренировки по всей таблице умножения:"))
+	table := MultiplyTableGen(l, AnswerScan("Введи разряд таблицы (2-9) или 1 для тренировки по всей таблице умножения. Для выхода введи 0"))
+	Clear()
 	for counter > 0 { //
 		wrongAnswer := make(map[int]expression)
-		randomExps := ChoiseQuantity(l, table, 5) //Выбираем 5 рандомных примера
+		randomExps := ChoiceQuantity(l, table, 5) //Выбираем 5 рандомных примера
+		fmt.Println("Для выхода введи 0")
 		fmt.Println("Реши следующие примеры:")
 		for key, _ := range randomExps {
 			fmt.Printf("%v * %v = ", randomExps[key].A, randomExps[key].B)
@@ -31,17 +32,15 @@ func StartGame(l Logger) {
 				fmt.Printf("%v * %v = %v\n", wrongAnswer[key].A, wrongAnswer[key].B, wrongAnswer[key].Res)
 			}
 			fmt.Println("Запомни и потренируйся еще! Удачи!")
-			if AnswerScan("Для выхода введи 0. Чтобы продолжить введи любое число") == 0 {
-				os.Exit(1)
-			}
+			AnswerScan("Для выхода введи 0. Чтобы продолжить введи любое число")
 
 		} else {
 			fmt.Println("Все верно! Ты молодец! УРА УРА УРА")
-			if rate := AnswerScan("Для выхода введи 0, чтобы продолжить изучение введи разряд табицы"); rate != 0 {
-				counter = 1
-				clearMap(table)
-				table = MultiplyTableGen(l, rate)
-			}
+			rate := AnswerScan("Для выхода введи 0, чтобы продолжить изучение введи разряд табицы (2-9) или 1 для тренировки по всей таблице умножения")
+			counter = 1
+			clearMap(table)
+			table = MultiplyTableGen(l, rate)
+
 		}
 		clearMap(wrongAnswer)
 		l.ShowLog(counter)
